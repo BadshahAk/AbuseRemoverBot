@@ -1,0 +1,2 @@
+# AbuseRemoverBot
+Abuse remover
