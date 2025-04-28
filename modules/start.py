@@ -2,6 +2,7 @@ from pyrogram import Client, filters
 from config import OWNER_ID, LOGGER_ID
 from pyrogram.types import Message
 
+# Decorator registers the handler automatically, no need to call this function from main.py
 @Client.on_message(filters.command("start"))
 async def start_handler(client, message: Message):
     await message.reply_text(
