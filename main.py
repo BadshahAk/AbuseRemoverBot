@@ -1,7 +1,7 @@
 import asyncio
 from pyrogram import Client, filters
 from config import API_ID, API_HASH, BOT_TOKEN
-from modules.start import start_handlers
+from modules.start import start_handler  # Change to the actual function name
 from modules.warn import warn_handlers
 from modules.nsfw_sticker import nsfw_handlers
 
@@ -12,7 +12,7 @@ app = Client(
     bot_token=BOT_TOKEN,
 )
 
-start_handlers(app)
+# No need to manually call start_handler here. Pyrogram handles this automatically via decorator.
 warn_handlers(app)
 nsfw_handlers(app)
 
