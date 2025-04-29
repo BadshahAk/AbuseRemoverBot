@@ -1,9 +1,9 @@
-from pyrogram import Client, filters
+from pyrogram import filters
 from config import OWNER_ID, LOGGER_ID
 from pyrogram.types import Message
+from main import app  # Yeh zaroori hai!!
 
-# Decorator registers the handler automatically, no need to call this function from main.py
-@Client.on_message(filters.command("start"))
+@app.on_message(filters.command("start") & filters.private)
 async def start_handler(client, message: Message):
     await message.reply_text(
         f"**Hello {message.from_user.first_name}!**\n\n"
