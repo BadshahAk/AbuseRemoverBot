@@ -1,9 +1,10 @@
 import asyncio
-from pyrogram import Client, filters
+from pyrogram import Client
 from config import API_ID, API_HASH, BOT_TOKEN
-from modules.start import start_handler  # Change to the actual function name
-from modules.warn import warn_handler
-from modules.nsfw_sticker import nsfw_handler
+from modules.start import start_handler  # Decorator kaafi hai
+from modules.warn import detect_abuse    # Decorator kaafi hai
+from modules.nsfw_sticker import nsfw_handler  # Decorator kaafi hai
+from pyrogram import idle
 
 app = Client(
     "AbuseRemoverBot",
@@ -11,10 +12,6 @@ app = Client(
     api_hash=API_HASH,
     bot_token=BOT_TOKEN,
 )
-
-# No need to manually call start_handler here. Pyrogram handles this automatically via decorator.
-warn_handlers(app)
-nsfw_handlers(app)
 
 print("Bot Started Successfully!")
 
