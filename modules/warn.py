@@ -7,7 +7,7 @@ import re
 abusive_words = open("abusive_words/abusive.txt", "r").read().splitlines()
 
 def warn_handlers(app):
-    @app.on_message(filters.group & filters.text & ~filters.edited)
+    @app.on_message(filters.group & filters.text)
     async def detect_abuse(client, message: Message):
         if message.reply_to_message and message.from_user.id != OWNER_ID:
             text = message.reply_to_message.text or ""
