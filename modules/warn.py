@@ -6,8 +6,11 @@ import re
 
 abusive_words = open("abusive_words/abusive.txt", "r").read().splitlines()
 
-@Client.on_message(filters.group & filters.text & ~filters.edited)
+@Client.on_message(filters.group & filters.text)
 async def detect_abuse(client, message: Message):
+    if message.edit_date:
+        return  # Ignore edited messages
+
     if message.reply_to_message and message.from_user.id != OWNER_ID:
         text = message.reply_to_message.text or ""
     else:
